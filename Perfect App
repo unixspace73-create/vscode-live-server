@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DISA — Dintshang South Africa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --disa1:#00ffd5;
+  --disa2:#0d6efd;
+  --primary:#2563eb;
+  --bg:#ffffff;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+
+body{
+  margin:0;
+  font-family:system-ui;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+}
+
+.screen.active{
+  display:flex;
+}
+
+/* WELCOME 1 */
+#welcome1{
+  background:
+    radial-gradient(circle at top, rgba(0,255,213,.12), transparent 40%),
+    linear-gradient(180deg,#000,#050505);
+  color:#fff;
+  align-items:center;
+  justify-content:center;
+}
+
+.welcome{
+  text-align:center;
+  width:100%;
+  max-width:360px;
+  padding:20px;
+}
+
+.logo-wrap{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  margin:0 auto;
+  background:linear-gradient(135deg,var(--disa1),var(--disa2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 40px rgba(0,255,213,.35);
+}
+
+.logo-big{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:6px;
+}
+
+.divider{
+  width:60px;
+  height:3px;
+  background:linear-gradient(90deg,var(--disa1),var(--disa2));
+  margin:18px auto;
+  border-radius:4px;
+}
+
+.loader{
+  margin-top:18px;
+  width:100%;
+  height:4px;
+  background:#111;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.loader span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--disa1),var(--disa2));
+  animation:load 2.8s ease forwards;
+}
+
+@keyframes load{
+  to{width:100%}
+}
+
+/* WELCOME 2 */
+#welcome2{
+  background:var(--bg);
+  color:#020617;
+  justify-content:center;
+}
+
+.app{
+  width:100%;
+  max-width:420px;
+  margin:auto;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+}
+
+.logo-box{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.logo-small{
+  width:88px;
+  height:88px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:36px;
+  margin:auto;
+  box-shadow:0 20px 40px rgba(37,99,235,.25);
+}
+
+.actions{
+  margin-top:40px;
+  display:grid;
+  gap:14px;
+}
+
+.btn-main{
+  height:52px;
+  font-weight:600;
+  border-radius:16px;
+  border:none;
+  cursor:pointer;
+}
+
+.btn-create{
+  background:var(--primary);
+  color:#fff;
+}
+
+.btn-login{
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.footer{
+  margin-top:auto;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  padding-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<section id="welcome1" class="screen active">
+  <div class="welcome">
+    <div class="logo-wrap">
+      <div class="logo-big">DISA</div>
+    </div>
+    <h2>Dintshang South Africa</h2>
+    <div>Talk • Share • Connect</div>
+    <div class="divider"></div>
+    <div id="status">Initializing secure connection…</div>
+    <div class="loader"><span></span></div>
+  </div>
+</section>
+
+<section id="welcome2" class="screen">
+  <div class="app">
+    <div class="logo-box">
+      <div class="logo-small">D</div>
+      <h1>DISA++</h1>
+      <p>Dintshang South Africa</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn-main btn-create" onclick="goRegister()">Create account</button>
+      <button class="btn-main btn-login" onclick="goLogin()">Sign in</button>
+    </div>
+
+    <div class="footer">
+      © <span id="year"></span> DISA++
+    </div>
+  </div>
+</section>
+
+<script>
+const screens=document.querySelectorAll(".screen")
+
+function show(id){
+  screens.forEach(s=>s.classList.remove("active"))
+  document.getElementById(id).classList.add("active")
+}
+
+setTimeout(()=>status.innerText="Connection established",1800)
+setTimeout(()=>show("welcome2"),3000)
+
+document.getElementById("year").textContent=new Date().getFullYear()
+
+function goRegister(){
+  alert("Register screen next")
+}
+
+function goLogin(){
+  alert("Login screen next")
+}
+</script>
+
+</body>
+</html>
